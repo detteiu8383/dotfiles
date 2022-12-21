@@ -3,6 +3,9 @@
 # inspired by Pastel Powerline Preset: https://starship.rs/presets/pastel-powerline.html
 # nerd font cheet sheet: https://www.nerdfonts.com/cheat-sheet
 
+# Inserts a blank line between shell prompts
+add_newline = false
+
 format = """
 [](#9A348E)\
 $os\
