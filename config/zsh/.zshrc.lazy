@@ -1,0 +1,41 @@
+### Aliases ###
+alias la='ls -a'
+alias ll='ls -al'
+
+alias cp='cp -i'
+alias mv='mv -i'
+alias rm='rm -i'
+
+### zsh plugins ###
+zinit wait lucid blockf light-mode for \
+  atload'async_init' @'mafredri/zsh-async' \
+  @'zsh-users/zsh-autosuggestions' \
+  @'zsh-users/zsh-completions' \
+  @'zdharma-continuum/fast-syntax-highlighting'
+
+### Editor ###
+export EDITOR="vi"
+(( ${+commands[vim]} )) && EDITOR="vim"
+
+export GIT_EDITOR="$EDITOR"
+
+### Python ###
+alias python="python3"
+alias pip="pip3"
+export PYTHONSTARTUP="$XDG_CONFIG_HOME/python/startup.py"
+
+### pylint ###
+export PYLINTHOME="$XDG_CACHE_HOME/pylint"
+
+### Starship ###
+export STARSHIP_CONFIG="$ZDOTDIR/starship.toml"
+export STARSHIP_CACHE="$XDG_CACHE_HOME/starship"
+eval "$(starship init zsh)"
+
+### local ###
+if [ -f "$ZDOTDIR/.zshrc.local" ]; then
+  source "$ZDOTDIR/.zshrc.local"
+fi
+
+### autoloads ###
+autoload -Uz _zinit
