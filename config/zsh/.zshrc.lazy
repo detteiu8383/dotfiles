@@ -1,6 +1,8 @@
 ### Aliases ###
-alias la='ls -a'
-alias ll='ls -al'
+alias la='ls -A'
+
+alias ll="exa -l -h -@ -mU --icons --git --time-style=long-iso --color=automatic --group-directories-first"
+alias l="ll -aa"
 
 alias cp='cp -i'
 alias mv='mv -i'
@@ -30,11 +32,6 @@ export PYTHONSTARTUP="$XDG_CONFIG_HOME/python/startup.py"
 ### pylint ###
 export PYLINTHOME="$XDG_CACHE_HOME/pylint"
 
-### Starship ###
-export STARSHIP_CONFIG="$ZDOTDIR/starship.toml"
-export STARSHIP_CACHE="$XDG_CACHE_HOME/starship"
-eval "$(starship init zsh)"
-
 ### local ###
 if [ -f "$ZDOTDIR/.zshrc.local" ]; then
   source "$ZDOTDIR/.zshrc.local"
@@ -42,3 +39,8 @@ fi
 
 ### autoloads ###
 autoload -Uz _zinit
+
+### Starship ###
+export STARSHIP_CONFIG="$ZDOTDIR/starship.toml"
+export STARSHIP_CACHE="$XDG_CACHE_HOME/starship"
+eval "$(starship init zsh)"

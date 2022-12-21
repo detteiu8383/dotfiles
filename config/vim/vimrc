@@ -1,0 +1,45 @@
+syntax on
+filetype plugin on
+
+set fenc=utf-8
+set hidden
+set autoread
+set showcmd
+
+" Indentation
+set autoindent
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set shiftround
+set smarttab
+set list
+set listchars=tab:>-,trail:-,extends:>,precedes:<,nbsp:%
+" Views
+set title
+set number
+set relativenumber
+set cursorline
+set showmatch
+set laststatus=2
+set statusline=%F%m\ %<[%{&fenc!=''?&fenc:&enc}]\ [%Y]\ [ln:%l,col:%v]
+set showtabline=2
+" Controls
+set mouse=a
+set whichwrap=b,s,h,l,<,>,[,],~
+" Search
+set hlsearch
+set incsearch
+set smartcase
+set ignorecase
+" Split
+set splitbelow
+set splitright
+" Backspace
+set backspace=indent,eol,start
+" Menu
+set wildmenu
+set wildmode=longest:full,full
+
+" .viminfo
+set viminfo+=n~/.local/share/vim/viminfo
