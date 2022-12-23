@@ -1,10 +1,10 @@
 #!/bin/sh -e
 ubuntu_version="$(lsb_release -r | awk '{print $2 * 100}')"
 
-add-apt-repository -y ppa:git-core/ppa
-apt update
-apt upgrade -y
-apt install -y \
+sudo add-apt-repository -y ppa:git-core/ppa
+sudo apt update
+sudo apt upgrade -y
+sudo apt install -y \
   bat \
   build-essential \
   direnv \
