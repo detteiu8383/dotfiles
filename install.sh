@@ -2,7 +2,7 @@
 
 INSTALL_DIR="${INSTALL_DIR:-$HOME/repos/github.com/detteiu8383/dotfiles}"
 
-if [ -d "$INSTALL_DIR"]; then
+if [ -d "$INSTALL_DIR" ]; then
   echo "updating dotfiles..."
   git -C "$INSTALL_DIR" pull
 else
