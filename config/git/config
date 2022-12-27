@@ -1,0 +1,8 @@
+[core]
+  ignoreCase = false
+
+[init]
+  defaultBranch = main
+
+[include]
+  path = conf.d/ghq.conf
