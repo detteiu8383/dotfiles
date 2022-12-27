@@ -6,4 +6,4 @@ source "$(dirname "$0")/common.bash"
 command -v apt >/dev/null || exit 0
 [ -n "$SKIP_APT" ] && exit
 
-sudo /bin/sh "$REPO_DIR/config/apt/install.sh"
+sudo -E /bin/sh "$REPO_DIR/config/apt/install.sh"
