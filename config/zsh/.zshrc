@@ -47,53 +47,6 @@ export STARSHIP_CONFIG="$ZDOTDIR/starship.toml"
 export STARSHIP_CACHE="$XDG_CACHE_HOME/starship"
 eval "$(starship init zsh)"
 
-### shortcut ###
-
-fcd() {
-    local dir
-    dir=$(find "${1:-.}" -path '*/\.*' -prune -o -type d -print 2> /dev/null | fzf +m) && cd "$dir" || exit
-}
-
-fvim() {
-    local file
-    file=$(
-        rg --files --hidden --follow --glob "!**/.git/*" |
-        fzf --preview 'bat  --color=always --style=header,grid {}' --preview-window=right:60%
-    )
-    vi "$file"
-}
-alias fv="fvim"
-
-fgh() {
-  local repo
-  repo="$(ghq list | fzf +m)"
-  [[ -n "${repo}" ]] && cd "$(ghq root)/${repo}" || exit
-}
-
-fadd() {
-  local selected
-  selected=("$(
-    git status --short |
-    fzf -m \
-    --preview "if [ ! -e {2} ];then
-      echo {2} has been removed.
-    elif [[ -d {2} ]];then
-      echo {2} is directory.
-    elif [[ {1} =~ '^M.*$' ]];then
-      bat --color=always --style=header,grid,numbers,changes --diff {2}
-    else
-      bat --color=always --style=header,grid,numbers,changes {2}
-    fi" \
-    --preview-window=right:60% | 
-    awk '{print $2}'
-  )")
-
-  if [[ -n "${selected}" ]]; then
-    selected=$(tr "\n" " " <<< "${selected}")
-    xargs git add "${@:1}" <<< "${selected}" && echo "Completed: git add ${selected}"
-  fi
-}
-
 widget::history() {
     local selected 
     selected="$(history -inr 1 | fzf --exit-0 --query "$LBUFFER" | cut -d' ' -f4- | sed 's/\\n/\n/g')"

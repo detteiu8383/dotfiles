@@ -8,6 +8,52 @@ alias cp='cp -i'
 alias mv='mv -i'
 alias rm='rm -i'
 
+### shortcut ###
+
+fcd() {
+    local dir
+    dir=$(find "${1:-.}" -path '*/\.*' -prune -o -type d -print 2> /dev/null | fzf +m --preview="fzf-preview-file {}") && cd "$dir" || exit
+}
+
+fvim() {
+    local file
+    file=$(
+        rg --files --hidden --follow --glob "!**/.git/*" |
+        fzf --preview 'bat  --color=always --style=header,grid {}'
+    )
+    vi "$file"
+}
+alias fv="fvim"
+
+fgh() {
+  local repo root
+  root="$(ghq root)"
+  repo="$(ghq list | fzf +m --preview="fzf-preview-git ${(q)root}/{}")"
+  [[ -n "${repo}" ]] && cd "${root}/${repo}"
+}
+
+fadd() {
+  local selected
+  selected=("$(
+    git status --short |
+    fzf -m \
+    --preview "if [ ! -e {2} ];then
+      echo {2} has been removed.
+    elif [[ -d {2} ]];then
+      echo {2} is directory.
+    elif [[ {1} =~ '^M.*$' ]];then
+      bat --color=always --style=header,grid,numbers,changes --diff {2}
+    else
+      bat --color=always --style=header,grid,numbers,changes {2}
+    fi" | 
+    awk '{print $2}'
+  )")
+
+  if [[ -n "${selected}" ]]; then
+    selected=$(tr "\n" " " <<< "${selected}")
+    xargs git add "${@:1}" <<< "${selected}" && echo "Completed: git add ${selected}"
+  fi
+}
 
 ### bat ###
 alias cat='bat --paging=never'
@@ -24,6 +70,21 @@ export EDITOR="vi"
 (( ${+commands[vim]} )) && EDITOR="vim"
 
 export GIT_EDITOR="$EDITOR"
+
+### FZF ###
+FZF_DEFAULT_OPTS+=' --border'
+FZF_DEFAULT_OPTS+=' --ansi'
+FZF_DEFAULT_OPTS+=' --bind "ctrl-d:print-query"'
+FZF_DEFAULT_OPTS+=' --bind "ctrl-p:replace-query"'
+FZF_DEFAULT_OPTS+=' --preview-window=right:60%'
+export FZF_DEFAULT_OPTS
+export FZF_DEFAULT_COMMAND='fd --hidden --color=always'
+
+### bat ###
+export MANPAGER="sh -c 'col -bx | bat --color=always --language=man --plain'"
+
+alias cat='bat --paging=never'
+alias batman='bat --language=man --plain'
 
 ### Python ###
 alias python="python3"
