@@ -64,6 +64,9 @@ fvim() {
 }
 alias fv="fvim"
 
+### local settings ###
+[ -f "$ZDOTDIR/.zshrc.local" ] && source "$ZDOTDIR/.zshrc.local"
+
 ### plugins ###
 zinit wait lucid null for \
     atinit'source "$ZDOTDIR/.zshrc.lazy"' \

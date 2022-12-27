@@ -1,1 +1,4 @@
 .zcomp*
+
+*.local
+local.*
