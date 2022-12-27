@@ -69,6 +69,18 @@ fgh() {
   [[ -n "${repo}" ]] && cd "$(ghq root)/${repo}"
 }
 
+widget::history() {
+    local selected="$(history -inr 1 | fzf --exit-0 --query "$LBUFFER" | cut -d' ' -f4- | sed 's/\\n/\n/g')"
+    if [ -n "$selected" ]; then
+        BUFFER="$selected"
+        CURSOR=$#BUFFER
+    fi
+    zle -R -c # refresh screen
+}
+
+zle -N widget::history
+bindkey "^R" widget::history
+
 ### local settings ###
 [ -f "$ZDOTDIR/.zshrc.local" ] && source "$ZDOTDIR/.zshrc.local"
 
