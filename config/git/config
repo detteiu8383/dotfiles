@@ -4,5 +4,10 @@
 [init]
   defaultBranch = main
 
+[credential]
+	helper = cache
+
 [include]
   path = conf.d/ghq.conf
+  path = conf.d/user.conf
+  path = conf.d/local.conf

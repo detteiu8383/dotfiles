@@ -69,6 +69,32 @@ fgh() {
   [[ -n "${repo}" ]] && cd "$(ghq root)/${repo}"
 }
 
+fadd() {
+  local selected
+  selected=$(
+    git status --short |
+    fzf -m \
+    --preview "if [ ! -e {2} ];then
+    echo {2} is removed.
+    elif [ -d {2} ];then
+    echo {2} is directory.
+    elif [ {1} = '??' ];then
+    bat --color=always --style=header,grid,numbers,changes {2}
+    else
+    bat --color=always --style=header,grid,numbers,changes --diff {2}
+    fi" \
+    --preview-window=right:60% | 
+    awk '{print $2}'
+  )
+
+  if [[ -n "$selected" ]]; then
+    selected=$(tr '\n' ' ' <<< "${selected}")
+    selected=$(echo "${selected}" | sed 's/\s*$//')
+    echo "${selected}"
+    git add "${@:1}" "${selected}" && echo "Completed: git add $selected"
+  fi
+}
+
 widget::history() {
     local selected="$(history -inr 1 | fzf --exit-0 --query "$LBUFFER" | cut -d' ' -f4- | sed 's/\\n/\n/g')"
     if [ -n "$selected" ]; then
