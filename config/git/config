@@ -1,13 +1,13 @@
 [core]
-  ignoreCase = false
+ignoreCase = false
 
 [init]
-  defaultBranch = main
+defaultBranch = main
 
 [credential]
-	helper = cache
+helper = cache
 
 [include]
-  path = conf.d/ghq.conf
-  path = conf.d/user.conf
-  path = conf.d/local.conf
+path = conf.d/ghq.conf
+path = conf.d/user.conf
+path = conf.d/local.conf
