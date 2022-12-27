@@ -51,7 +51,7 @@ eval "$(starship init zsh)"
 
 fcd() {
   local dir
-  dir=$(find ${1:-.} -path '*/\.*' -prune -o -type d -print 2> /dev/null | fzf +m) &&cd "$dir"
+  dir=$(find ${1:-.} -path '*/\.*' -prune -o -type d -print 2> /dev/null | fzf +m) && cd "$dir"
 }
 
 fvim() {
@@ -63,6 +63,11 @@ fvim() {
   vi "$file"
 }
 alias fv="fvim"
+
+fgh() {
+  local repo="$(ghq list >/dev/null | fzf +m)"
+  [[ -n "${repo}" ]] && cd "$(ghq root)/${repo}"
+}
 
 ### local settings ###
 [ -f "$ZDOTDIR/.zshrc.local" ] && source "$ZDOTDIR/.zshrc.local"
