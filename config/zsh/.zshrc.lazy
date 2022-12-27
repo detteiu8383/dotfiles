@@ -8,8 +8,9 @@ alias cp='cp -i'
 alias mv='mv -i'
 alias rm='rm -i'
 
-### Homebrew ###
-eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+
+### bat ###
+alias cat='bat --paging=never'
 
 ### zsh plugins ###
 zinit wait lucid blockf light-mode for \
@@ -39,8 +40,3 @@ fi
 
 ### autoloads ###
 autoload -Uz _zinit
-
-### Starship ###
-export STARSHIP_CONFIG="$ZDOTDIR/starship.toml"
-export STARSHIP_CACHE="$XDG_CACHE_HOME/starship"
-eval "$(starship init zsh)"

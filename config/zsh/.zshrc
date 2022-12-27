@@ -39,6 +39,14 @@ setopt MAGIC_EQUAL_SUBST
 setopt PRINT_EIGHT_BIT
 setopt NO_FLOW_CONTROL
 
+### Homebrew ###
+eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+
+### Starship ###
+export STARSHIP_CONFIG="$ZDOTDIR/starship.toml"
+export STARSHIP_CACHE="$XDG_CACHE_HOME/starship"
+eval "$(starship init zsh)"
+
 ### plugins ###
 zinit wait lucid null for \
     atinit'source "$ZDOTDIR/.zshrc.lazy"' \
