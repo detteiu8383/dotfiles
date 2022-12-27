@@ -47,6 +47,23 @@ export STARSHIP_CONFIG="$ZDOTDIR/starship.toml"
 export STARSHIP_CACHE="$XDG_CACHE_HOME/starship"
 eval "$(starship init zsh)"
 
+### shortcut ###
+
+fcd() {
+  local dir
+  dir=$(find ${1:-.} -path '*/\.*' -prune -o -type d -print 2> /dev/null | fzf +m) &&cd "$dir"
+}
+
+fvim() {
+  local file
+  file=$(
+         rg --files --hidden --follow --glob "!**/.git/*" | fzf \
+             --preview 'bat  --color=always --style=header,grid {}' --preview-window=right:60%
+     )
+  vi "$file"
+}
+alias fv="fvim"
+
 ### plugins ###
 zinit wait lucid null for \
     atinit'source "$ZDOTDIR/.zshrc.lazy"' \
