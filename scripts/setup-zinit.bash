@@ -4,9 +4,9 @@ set -x
 source "$(dirname "$0")/common.bash"
 
 if [ -d "$XDG_DATA_HOME/zinit/bin" ]; then
-  echo "zinit is already installed."
+  echo "\e[1m\e[35m[dotfiles]\e[0m zinit is already installed."
   git -C "$XDG_DATA_HOME/zinit/bin" pull
 else
-  echo "Installing zinit..."
+  echo "\e[1m\e[35m[dotfiles]\e[0m Installing zinit..."
   git clone "https://github.com/zdharma-continuum/zinit" "$XDG_DATA_HOME/zinit/bin"
 fi
