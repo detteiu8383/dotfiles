@@ -5,9 +5,13 @@ ignoreCase = false
 defaultBranch = main
 
 [credential]
-helper = cache
+helper = /mnt/c/Program\\ Files/Git/mingw64/bin/git-credential-manager-core.exe
+
+[user]
+name = detteiu8383
+email = "" # set in conf.d/local.conf
+useConfigOnly = true
 
 [include]
 path = conf.d/ghq.conf
-path = conf.d/user.conf
 path = conf.d/local.conf
