@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
-set -x
+# set -x
+
+export DOTFILES_PREFIX="$(printf '\033[1;35m[dotfiles]\033[0m')"
 
 export CUR_DIR REPO_DIR
 CUR_DIR="$(

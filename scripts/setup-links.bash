@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
-set -x
 # shellcheck source=./scripts/common.bash
 source "$(dirname "$0")/common.bash"
+
+echo "$DOTFILES_PREFIX setup symbolic links..."
 
 if [ ! -d "$HOME/.ssh" ]; then
   mkdir -p "$HOME/.ssh"

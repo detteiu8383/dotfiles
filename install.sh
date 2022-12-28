@@ -2,11 +2,13 @@
 
 INSTALL_DIR="${INSTALL_DIR:-$HOME/repos/github.com/detteiu8383/dotfiles}"
 
+DOTFILES_PREFIX="$(printf '\033[1;35m[dotfiles]\033[0m')"
+
 if [ -d "$INSTALL_DIR" ]; then
-  echo "\e[1m\e[35m[dotfiles]\e[0m Updating dotfiles..."
+  echo "$DOTFILES_PREFIX Updating dotfiles..."
   git -C "$INSTALL_DIR" pull
 else
-  echo "\e[1m\e[35m[dotfiles]\e[0m Installing dotfiles..."
+  echo "$DOTFILES_PREFIX Installing dotfiles..."
   git clone https://github.com/detteiu8383/dotfiles "$INSTALL_DIR"
 fi
 
