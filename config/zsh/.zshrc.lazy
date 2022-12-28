@@ -12,14 +12,14 @@ alias rm='rm -i'
 
 fcd() {
     local dir
-    dir=$(find "${1:-.}" -path '*/\.*' -prune -o -type d -print 2> /dev/null | fzf +m --preview="fzf-preview-file {}") && cd "$dir" || exit
+    dir=$(find "${1:-.}" -path '*/\.*' -prune -o -type d -print 2> /dev/null | fzf-tmux -p 80% +m --preview="fzf-preview-file {}") && cd "$dir"
 }
 
 fvim() {
     local file
     file=$(
         rg --files --hidden --follow --glob "!**/.git/*" |
-        fzf --preview 'bat  --color=always --style=header,grid {}'
+        fzf-tmux -p 80% --preview 'bat  --color=always --style=header,grid {}'
     )
     vi "$file"
 }
@@ -28,7 +28,7 @@ alias fv="fvim"
 fgh() {
   local repo root
   root="$(ghq root)"
-  repo="$(ghq list | fzf +m --preview="fzf-preview-git ${(q)root}/{}")"
+  repo="$(ghq list | fzf-tmux -p 80% +m --preview="fzf-preview-git ${(q)root}/{}")"
   [[ -n "${repo}" ]] && cd "${root}/${repo}"
 }
 
@@ -36,7 +36,7 @@ fadd() {
   local selected
   selected=("$(
     git status --short |
-    fzf -m \
+    fzf-tmux -p 80% -m \
     --preview "if [ ! -e {2} ];then
       echo {2} has been removed.
     elif [[ -d {2} ]];then

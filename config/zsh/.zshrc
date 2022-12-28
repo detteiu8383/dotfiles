@@ -49,7 +49,7 @@ eval "$(starship init zsh)"
 
 widget::history() {
     local selected 
-    selected="$(history -inr 1 | fzf --exit-0 --query "$LBUFFER" | cut -d' ' -f4- | sed 's/\\n/\n/g')"
+    selected="$(history -inr 1 | fzf-tmux -p 80% --exit-0 --query "$LBUFFER" | cut -d' ' -f4- | sed 's/\\n/\n/g')"
     if [ -n "$selected" ]; then
         BUFFER="$selected"
         CURSOR=$#BUFFER
