@@ -16,4 +16,10 @@ mkdir -p \
 
 ln -sfv "$REPO_DIR/config/"* "$XDG_CONFIG_HOME"
 ln -sfv "$XDG_CONFIG_HOME/zsh/.zshenv" "$HOME/.zshenv"
+
+if [ -d "$HOME/.gitmoji" ]; then
+  rm -rf "$HOME/.gitmoji"
+fi
+ln -sfv "$XDG_CONFIG_HOME/gitmoji" "$HOME/.gitmoji"
+
 ln -sfnv "$XDG_CONFIG_HOME/vim" "$HOME/.vim"

@@ -1,0 +1,130 @@
+[
+  {
+    "emoji": "🎨",
+    "entity": "&#x1f3a8;",
+    "code": ":art:",
+    "description": "Add or update the UI and style files.",
+    "name": "art",
+    "semver": null
+  },
+  {
+    "emoji": "🔥",
+    "entity": "&#x1f525;",
+    "code": ":fire:",
+    "description": "Remove code or files.",
+    "name": "fire",
+    "semver": null
+  },
+  {
+    "emoji": "🐛",
+    "entity": "&#x1f41b;",
+    "code": ":bug:",
+    "description": "Fix a bug.",
+    "name": "bug",
+    "semver": "patch"
+  },
+  {
+    "emoji": "✨",
+    "entity": "&#x2728;",
+    "code": ":sparkles:",
+    "description": "Introduce new features.",
+    "name": "sparkles",
+    "semver": "minor"
+  },
+  {
+    "emoji": "📝",
+    "entity": "&#x1f4dd;",
+    "code": ":memo:",
+    "description": "Add or update documentation.",
+    "name": "memo",
+    "semver": null
+  },
+  {
+    "emoji": "🚀",
+    "entity": "&#x1f680;",
+    "code": ":rocket:",
+    "description": "Deploy stuff.",
+    "name": "rocket",
+    "semver": null
+  },
+  {
+    "emoji": "💄",
+    "entity": "&#ff99cc;",
+    "code": ":lipstick:",
+    "description": "Format of the code.",
+    "name": "lipstick",
+    "semver": "patch"
+  },
+  {
+    "emoji": "🎉",
+    "entity": "&#127881;",
+    "code": ":tada:",
+    "description": "Begin a project.",
+    "name": "tada",
+    "semver": null
+  },
+  {
+    "emoji": "✅",
+    "entity": "&#x2705;",
+    "code": ":white_check_mark:",
+    "description": "Add, update, or pass tests.",
+    "name": "white-check-mark",
+    "semver": null
+  },
+  {
+    "emoji": "🔒️",
+    "entity": "&#x1f512;",
+    "code": ":lock:",
+    "description": "Fix security issues.",
+    "name": "lock",
+    "semver": "patch"
+  },
+  {
+    "emoji": "🔖",
+    "entity": "&#x1f516;",
+    "code": ":bookmark:",
+    "description": "Release / Version tags.",
+    "name": "bookmark",
+    "semver": null
+  },
+  {
+    "emoji": "🚧",
+    "entity": "&#x1f6a7;",
+    "code": ":construction:",
+    "description": "Work in progress.",
+    "name": "construction",
+    "semver": null
+  },
+  {
+    "emoji": "🆙",
+    "entity": "🆙",
+    "code": ":up:",
+    "description": "Update dependencies.",
+    "name": "up",
+    "semver": "patch"
+  },
+  {
+    "emoji": "♻️",
+    "entity": "&#x267b;",
+    "code": ":recycle:",
+    "description": "Refactor code.",
+    "name": "recycle",
+    "semver": null
+  },
+  {
+    "emoji": "🔧",
+    "entity": "&#x1f527;",
+    "code": ":wrench:",
+    "description": "Add or update configuration files.",
+    "name": "wrench",
+    "semver": "patch"
+  },
+  {
+    "emoji": "💩",
+    "entity": "&#58613;",
+    "code": ":poop:",
+    "description": "Write bad code that needs to be improved.",
+    "name": "poop",
+    "semver": null
+  }
+]

@@ -8,6 +8,8 @@ alias cp='cp -i'
 alias mv='mv -i'
 alias rm='rm -i'
 
+alias gmc='gitmoji -c'
+
 ### shortcut ###
 
 fcd() {
