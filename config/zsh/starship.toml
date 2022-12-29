@@ -95,9 +95,9 @@ renamed = 'ﳳ '
 modified = ' '
 staged = '[$count](bg:3_bg green) '
 untracked = ' '
-ahead = '${count}'
-behind = '${count}'
-diverged = ' ${ahead_count} ${behind_count}'
+ahead = '${count} '
+behind = '${count} '
+diverged = ' ${ahead_count} ${behind_count} '
 up_to_date = ' '
 
 [golang]
