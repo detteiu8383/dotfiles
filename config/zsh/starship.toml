@@ -4,54 +4,64 @@
 # nerd font cheet sheet: https://www.nerdfonts.com/cheat-sheet
 
 format = """
-[](#DB2562)\
+[](fg:1_bg)\
 $os\
 $username\
-[](bg:#C63FCC fg:#DB2562)\
+[](bg:2_bg fg:1_bg)\
 $directory\
-[](fg:#C63FCC bg:#8340BB)\
+[](bg:3_bg fg:2_bg)\
 $git_branch\
-$git_metrics\
 $git_status\
-[](fg:#8340BB bg:#533FCC)\
-$c\
+[](bg:4_bg fg:3_bg)\
 $golang\
+$python\
 $haskell\
-$java\
 $nodejs\
+$nim\
 $rust\
-[](fg:#533FCC bg:#3F63CC)\
-$docker_context\
-[](fg:#3F63CC)\
-$fill\
-[](fg:#66EECC)\
-$cmd_duration\
-[](bg:#66EECC fg:bright-green)\
+[](bg:5_bg fg:4_bg)\
 $time\
-[](fg:bright-green)\
-\n$character\
-"""
+[](bg:6_bg fg:5_bg)\
+$cmd_duration\
+[](fg:6_bg)\
+\n$character"""
 
 # Disable the blank line at the start of the prompt
 add_newline = false
+
+palette = "eyemono"
+
+[palettes.eyemono]
+1_bg = '#DE0065'
+2_bg = '#FF2883'
+3_bg = '#BB2883'
+4_bg = '#8340BB'
+5_bg = '#4040BB'
+6_bg = '#28BBBB'
+1_fg = '#FFFFFF'
+2_fg = '#FFFFFF'
+3_fg = '#FFFFFF'
+4_fg = '#FFFFFF'
+5_fg = '#FFFFFF'
+6_fg = '#FFFFFF'
 
 # You can also replace your username with a neat symbol like   or disable this
 # and use the os module below
 [username]
 show_always = true
-style_user = "bg:#DB2562 fg:bright-white"
-style_root = "bg:#DB2562 fg:bright-white"
+style_user = "bg:1_bg fg:1_fg"
+style_root = "bg:1_bg fg:1_fg"
 format = '[$user ]($style)'
 disabled = false
 
 # An alternative to the username module which displays a symbol that
 # represents the current operating system
 [os]
-style = "bg:#DB2562 fg:bright-white"
-disabled = true                      # Disabled by default
+style = "bg:1_bg fg:1_fg"
+disabled = false                      # Disabled by default
 
 [directory]
-style = "bg:#C63FCC fg:bright-white"
+style = "bg:2_bg fg:2_fg"
 format = "[  $path ]($style)"
 truncation_length = 3
 truncation_symbol = "…/"
@@ -70,40 +80,20 @@ read_only = " "
 # So either put "Important Documents" before "Documents" or use the substituted version:
 # "Important  " = "  "
 
-[c]
-symbol = " "
-style = "bg:#533FCC fg:bright-white"
-format = '[ $symbol ($version) ]($style)'
-
-[docker_context]
-symbol = " "
-style = "bg:#3F63CC fg:bright-white"
-format = '[ $symbol $context ]($style) $path'
-
-[elixir]
-symbol = " "
-style = "bg:#533FCC fg:bright-white"
-format = '[ $symbol ($version) ]($style)'
-
-[elm]
-symbol = " "
-style = "bg:#533FCC fg:bright-white"
-format = '[ $symbol ($version) ]($style)'
-
 [git_branch]
 symbol = ""
-style = "bg:#8340BB fg:bright-white"
+style = "bg:3_bg fg:3_fg"
 format = '[ $symbol $branch ]($style)'
 
 [git_status]
-style = "bg:#8340BB fg:bright-white"
+style = "bg:3_bg fg:3_fg"
 format = '[$all_status$ahead_behind]($style)'
 conflicted = ' '
 stashed = ' '
 deleted = ' '
 renamed = 'ﳳ '
 modified = ' '
-staged = '[$count](bg:#8340BB green) '
+staged = '[$count](bg:3_bg green) '
 untracked = ' '
 ahead = '${count}'
 behind = '${count}'
@@ -112,64 +102,44 @@ up_to_date = ''
 
 [golang]
 symbol = " "
-style = "bg:#533FCC fg:bright-white"
+style = "bg:4_bg fg:4_fg"
+format = '[ $symbol ($version) ]($style)'
+
+[python]
+symbol = " "
+style = "bg:4_bg fg:4_fg"
 format = '[ $symbol ($version) ]($style)'
 
 [haskell]
 symbol = " "
-style = "bg:#533FCC fg:bright-white"
-format = '[ $symbol ($version) ]($style)'
-
-[java]
-symbol = " "
-style = "bg:#533FCC fg:bright-white"
-format = '[ $symbol ($version) ]($style)'
-
-[julia]
-symbol = " "
-style = "bg:#533FCC fg:bright-white"
+style = "bg:4_bg fg:4_fg"
 format = '[ $symbol ($version) ]($style)'
 
 [nodejs]
 symbol = ""
-style = "bg:#533FCC fg:bright-white"
+style = "bg:4_bg fg:4_fg"
 format = '[ $symbol ($version) ]($style)'
 
 [nim]
 symbol = " "
-style = "bg:#533FCC fg:bright-white"
+style = "bg:4_bg fg:4_fg"
 format = '[ $symbol ($version) ]($style)'
 
 [rust]
 symbol = ""
-style = "bg:#533FCC fg:bright-white"
-format = '[ $symbol ($version) ]($style)'
-
-[scala]
-symbol = " "
-style = "bg:#533FCC fg:bright-white"
+style = "bg:4_bg fg:4_fg"
 format = '[ $symbol ($version) ]($style)'
 
 [time]
 disabled = false
 time_format = "%R"                        # Hour:Minute Format
-style = "bg:bright-green fg:white"
+style = "bg:5_bg fg:5_fg"
 format = '[  $time ]($style)'
 
 [cmd_duration]
 min_time = 500
-style = "bg:#66EECC fg:white"
+style = "bg:6_bg fg:6_fg"
 format = "[ $duration ]($style)"
-
-[memory_usage]
-disabled = false
-threshold = 0
-style = "bg:#91EE99 fg:white"
-format = "[  ${ram} ]($style)"
-
-[fill]
-symbol = " "
-style = "fg:#ADA1AD"
 
 [os.symbols]
 Alpine = " "
