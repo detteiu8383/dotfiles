@@ -42,7 +42,7 @@ fadd() {
     --preview "if [ ! -e {2} ];then
       echo {2} has been removed.
     elif [[ -d {2} ]];then
-      echo {2} is directory.
+      fzf-preview-directory {2}
     elif [[ {1} =~ '^M.*$' ]];then
       bat --color=always --style=header,grid,numbers,changes --diff {2}
     else
