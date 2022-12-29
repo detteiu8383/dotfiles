@@ -105,6 +105,10 @@ export PYTHONSTARTUP="$XDG_CONFIG_HOME/python/startup.py"
 ### pylint ###
 export PYLINTHOME="$XDG_CACHE_HOME/pylint"
 
+### wget ###
+export WGETRC="$XDG_CONFIG_HOME/wgetrc"
+alias wget='wget --hsts-file="$XDG_CACHE_HOME/wget-hsts'
+
 ### local ###
 if [ -f "$ZDOTDIR/.zshrc.local" ]; then
   source "$ZDOTDIR/.zshrc.local"
