@@ -10,6 +10,9 @@ alias rm='rm -i'
 
 alias gmc='gitmoji -c'
 
+alias vi='nvim'
+alias vim='nvim'
+
 ### shortcut ###
 
 fcd() {
@@ -23,7 +26,7 @@ fvim() {
         rg --files --hidden --follow --glob "!**/.git/*" |
         fzf-tmux -p 80% --preview 'bat  --color=always --style=header,grid {}'
     )
-    vi "$file"
+    [[ -n "${file}" ]] && vi "$file"
 }
 alias fv="fvim"
 
