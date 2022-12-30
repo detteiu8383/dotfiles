@@ -74,6 +74,7 @@ export EDITOR="vi"
 export GIT_EDITOR="$EDITOR"
 
 ### FZF ###
+[ -f "${XDG_CONFIG_HOME}"/fzf/fzf.zsh ] && source "${XDG_CONFIG_HOME}"/fzf/fzf.zsh
 FZF_DEFAULT_OPTS+=' --border'
 FZF_DEFAULT_OPTS+=' --ansi'
 FZF_DEFAULT_OPTS+=' --bind "ctrl-d:print-query"'
