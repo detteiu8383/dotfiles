@@ -4,4 +4,4 @@
 local.*
 !local.*.sample
 
-packer_compiled.lua
+lazy-lock.json
