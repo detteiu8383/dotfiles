@@ -1,12 +1,11 @@
 return function()
-  local utils = require("libraries._set_config")
-  local conf_lsp = utils.conf_lsp
-
   vim.diagnostic.config({
-    virtual_text = false,
+    virtual_text = {
+      format = function(diagnostic)
+        return string.format("%s (%s: %s)", diagnostic.message, diagnostic.source, diagnostic.code)
+      end,
+    },
   })
-  vim.o.updatetime = 250
-  vim.cmd([[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]])
 
   vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
     callback = function()
@@ -25,10 +24,4 @@ return function()
     ["]d"] = { "<cmd>lua vim.diagnostic.goto_next()<CR>", "Move to the next diagnostic" },
     ["<space>q"] = { "<cmd>lua vim.diagnostic.setloclist()<CR>", "Add buffer diagnostics to the location list" },
   })
-
-  local servers = require("lsp.servers")
-
-  for _, lsp in ipairs(servers) do
-    conf_lsp(lsp)
-  end
 end

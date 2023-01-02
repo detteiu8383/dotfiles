@@ -101,12 +101,14 @@ require("lazy").setup({
     config = conf("mason"),
     dependencies = {
       "williamboman/mason-lspconfig.nvim",
+      config = conf("mason-lspconfig")
     }
   },
 
   {
     "kkharji/lspsaga.nvim",
-    config = conf("lspsaga")
+    config = conf("lspsaga"),
+    branch = "main",
   },
 
   -- completion
