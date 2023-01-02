@@ -1,5 +1,11 @@
 return function()
-  require("neo-tree").setup({})
+  require("neo-tree").setup({
+    default_component_configs = {
+      indent = {
+        last_indent_marker = "└ ",
+      }
+    }
+  })
 
   -- vim.cmd Your <leader> key ([[nnoremap \ :Neotree reveal<cr>]])
   require("which-key").register({
