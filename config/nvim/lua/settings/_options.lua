@@ -14,6 +14,7 @@ o.expandtab = true
 o.fileencoding = "utf-8"
 o.hlsearch = true
 o.ignorecase = true
+o.laststatus = 3
 o.mouse = "a" -- all previous modes
 o.number = true
 o.numberwidth = 4

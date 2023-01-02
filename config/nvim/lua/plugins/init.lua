@@ -19,12 +19,46 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
   "nvim-lua/plenary.nvim",
 
+  "github/copilot.vim",
+
   -- color scheme
+  -- {
+  --   'folke/tokyonight.nvim',
+  --   config = conf("tokyonight"),
+  --   lazy = false,
+  --   priority = 1000,
+  -- },
   {
-    'folke/tokyonight.nvim',
-    config = conf("tokyonight"),
+    "EdenEast/nightfox.nvim",
+    config = conf("nightfox"),
     lazy = false,
-    priority = 1000,
+    priority = 1000
+  },
+
+  {
+    "rcarriga/nvim-notify",
+    config = function()
+      vim.notify = require("notify")
+    end,
+  },
+
+  {
+    "unblevable/quick-scope",
+  },
+
+  -- treesitter
+  {
+    "nvim-treesitter/nvim-treesitter",
+    config = conf("treesitter"),
+    build = ":TSUpdate",
+  },
+
+  -- key mapping
+  {
+    "folke/which-key.nvim",
+    config = function()
+      require("which-key").setup()
+    end,
   },
 
   -- file manager
@@ -42,5 +76,53 @@ require("lazy").setup({
   {
     "nvim-lualine/lualine.nvim",
     config = conf("lualine")
-  }
+  },
+
+  {
+    "folke/trouble.nvim",
+    dependencies = {
+      "kyazdani42/nvim-web-devicons"
+    },
+    config = conf("trouble")
+  },
+
+  -- lsp
+  {
+    "neovim/nvim-lspconfig",
+    config = conf("lspconfig"),
+    dependencies = {
+      "hrsh7th/cmp-nvim-lsp",
+      "RRethy/vim-illuminate",
+    },
+  },
+
+  {
+    "williamboman/mason.nvim",
+    config = conf("mason"),
+    dependencies = {
+      "williamboman/mason-lspconfig.nvim",
+    }
+  },
+
+  {
+    "kkharji/lspsaga.nvim",
+    config = conf("lspsaga")
+  },
+
+  -- completion
+  {
+    "hrsh7th/nvim-cmp",
+    config = conf("nvim-cmp"),
+    event = "InsertEnter",
+    dependencies = {
+      { "hrsh7th/cmp-nvim-lsp", after = "nvim-lspconfig" },
+      { "hrsh7th/cmp-buffer", after = "nvim-cmp" },
+      { "hrsh7th/cmp-cmdline", after = "nvim-cmp" },
+      { "hrsh7th/cmp-path", after = "nvim-cmp" },
+      { "hrsh7th/cmp-emoji", after = "nvim-cmp" },
+      { "hrsh7th/cmp-nvim-lsp-signature-help", after = "nvim-cmp" },
+      { "hrsh7th/cmp-nvim-lsp-document-symbol", after = "nvim-cmp" },
+      { "onsails/lspkind.nvim" },
+    },
+  },
 })
