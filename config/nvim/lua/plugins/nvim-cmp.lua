@@ -29,13 +29,13 @@ return function()
       })
     },
     window = {
-      completion = {
-        border = 'rounded',
-        scrollbar = '║',
-      },
+      completion = cmp.config.window.bordered({
+        border = "rounded",
+        scrollbar = '║'
+      }),
       documentation = {
         border = 'rounded',
-        scrollbar = '',
+        scrollbar = '║',
       },
     }
   })
