@@ -35,7 +35,8 @@ return function()
           require('illuminate').on_attach(client)
 
           vim.cmd 'autocmd BufWritePre * lua vim.lsp.buf.format()'
-        end
+        end,
+        capabilities = require('cmp_nvim_lsp').default_capabilities()
       }
 
       require("lspconfig")[server].setup(opt)

@@ -58,6 +58,12 @@ require("lazy").setup({
     "windwp/nvim-autopairs",
     config = conf("autopairs"),
   },
+  {
+    "windwp/nvim-ts-autotag",
+    config = function()
+      require("nvim-ts-autotag").setup()
+    end
+  },
 
   -- key mapping
   {
@@ -65,6 +71,35 @@ require("lazy").setup({
     config = function()
       require("which-key").setup()
     end,
+  },
+
+  -- git
+  {
+    "TimUntersberger/neogit",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "sindrets/diffview.nvim",
+    },
+    config = function()
+      require("neogit").setup({
+        -- customize displayed signs
+        signs = {
+          -- { CLOSED, OPENED }
+          section = { "", "" },
+          item = { "", "" },
+          hunk = { "", "" },
+        },
+        integrations = {
+          diffview = true
+        }
+      })
+    end
+  },
+  {
+    "lewis6991/gitsigns.nvim",
+    config = function()
+      require("gitsigns").setup({})
+    end
   },
 
   -- file manager
@@ -147,6 +182,8 @@ require("lazy").setup({
       { "hrsh7th/cmp-emoji", after = "nvim-cmp" },
       { "hrsh7th/cmp-nvim-lsp-signature-help", after = "nvim-cmp" },
       { "hrsh7th/cmp-nvim-lsp-document-symbol", after = "nvim-cmp" },
+      { "L3MON4D3/LuaSnip", after = "nvim-cmp" },
+      { "saadparwaiz1/cmp_luasnip", after = "nvim-cmp" },
       { "onsails/lspkind.nvim" },
     },
   },
