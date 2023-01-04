@@ -17,7 +17,7 @@ alias vim='nvim'
 
 fcd() {
     local dir
-    dir=$(find "${1:-.}" -path '*/\.*' -prune -o -type d -print 2> /dev/null | fzf-tmux -p 80% +m --preview="fzf-preview-file {}") && cd "$dir"
+    dir=$(find "${1:-.}" -path '*/\.*' -prune -o -path '*/node_modules/*' -prune -o -type d -print 2> /dev/null | fzf-tmux -p 80% +m --preview="fzf-preview-file {}") && cd "$dir"
 }
 
 fvim() {
