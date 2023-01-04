@@ -1,7 +1,7 @@
 -- https://vim-jp.org/vimdoc-ja/options.html
 local o = vim.opt
 
-o.ambiwidth = "double"
+o.ambiwidth = "single"
 o.background = "dark"
 o.backup = false
 o.clipboard = "unnamedplus"
