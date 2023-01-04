@@ -28,11 +28,19 @@ require("lazy").setup({
   --   lazy = false,
   --   priority = 1000,
   -- },
+  -- {
+  --   "EdenEast/nightfox.nvim",
+  --   config = conf("nightfox"),
+  --   lazy = false,
+  --   priority = 1000
+  -- },
   {
-    "EdenEast/nightfox.nvim",
-    config = conf("nightfox"),
+    "Shadorain/shadotheme",
     lazy = false,
-    priority = 1000
+    priority = 1000,
+    config = function()
+      vim.cmd("colorscheme shado")
+    end,
   },
 
   {
@@ -53,6 +61,34 @@ require("lazy").setup({
     build = ":TSUpdate",
   },
 
+  -- comment
+  {
+    "numToStr/Comment.nvim",
+    dependencies = {
+      "JoosepAlviste/nvim-ts-context-commentstring",
+    },
+    config = function()
+      require("Comment").setup({
+        pre_hook = require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook(),
+      })
+    end
+  },
+
+  {
+    "JoosepAlviste/nvim-ts-context-commentstring",
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+    },
+    config = function()
+      require('nvim-treesitter.configs').setup({
+        context_commentstring = {
+          enable = true,
+          enable_autocmd = false,
+        }
+      })
+    end
+  },
+
   -- auto close brackets
   {
     "windwp/nvim-autopairs",
@@ -71,6 +107,7 @@ require("lazy").setup({
     config = function()
       require("which-key").setup()
     end,
+    lazy = true
   },
 
   -- git
@@ -100,6 +137,18 @@ require("lazy").setup({
     config = function()
       require("gitsigns").setup({})
     end
+  },
+
+  -- fuzzy finder
+  {
+    "nvim-telescope/telescope.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-lua/popup.nvim",
+      "nvim-telescope/telescope-frecency.nvim",
+      "kkharji/sqlite.lua"
+    },
+    config = conf("telescope")
   },
 
   -- file manager
@@ -173,7 +222,7 @@ require("lazy").setup({
   {
     "hrsh7th/nvim-cmp",
     config = conf("nvim-cmp"),
-    event = "InsertEnter",
+    event = { "InsertEnter", "CmdlineEnter" },
     dependencies = {
       { "hrsh7th/cmp-nvim-lsp", after = "nvim-lspconfig" },
       { "hrsh7th/cmp-buffer", after = "nvim-cmp" },
