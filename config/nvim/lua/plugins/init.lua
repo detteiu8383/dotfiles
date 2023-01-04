@@ -89,6 +89,13 @@ require("lazy").setup({
     end
   },
 
+  -- unit selection
+  {
+    "David-Kunz/treesitter-unit",
+    config = conf("treesitter-unit"),
+    dependencies = { "nvim-treesitter/nvim-treesitter" }
+  },
+
   -- auto close brackets
   {
     "windwp/nvim-autopairs",
@@ -193,10 +200,16 @@ require("lazy").setup({
     config = conf("trouble")
   },
 
+  {
+    "SmiteshP/nvim-navic",
+    dependencies = {
+      "neovim/nvim-lspconfig"
+    }
+  },
+
   -- lsp
   {
     "neovim/nvim-lspconfig",
-    config = conf("lspconfig"),
     dependencies = {
       "hrsh7th/cmp-nvim-lsp",
       "RRethy/vim-illuminate",
