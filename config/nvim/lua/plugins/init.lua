@@ -53,6 +53,12 @@ require("lazy").setup({
     build = ":TSUpdate",
   },
 
+  -- auto close brackets
+  {
+    "windwp/nvim-autopairs",
+    config = conf("autopairs"),
+  },
+
   -- key mapping
   {
     "folke/which-key.nvim",
@@ -66,10 +72,27 @@ require("lazy").setup({
     "nvim-neo-tree/neo-tree.nvim",
     dependencies = {
       "nvim-lua/plenary.nvim",
-      "kyazdani42/nvim-web-devicons",
+      "nvim-tree/nvim-web-devicons",
       "MunifTanjim/nui.nvim",
     },
     config = conf("neo-tree")
+  },
+
+  -- buffer line
+  {
+    "akinsho/bufferline.nvim",
+    dependencies = {
+      "nvim-tree/nvim-web-devicons"
+    },
+    config = conf("bufferline")
+  },
+
+  -- scrollbar
+  {
+    "petertriho/nvim-scrollbar",
+    config = function()
+      require("scrollbar").setup({})
+    end
   },
 
   -- status bar
@@ -81,7 +104,7 @@ require("lazy").setup({
   {
     "folke/trouble.nvim",
     dependencies = {
-      "kyazdani42/nvim-web-devicons"
+      "nvim-tree/nvim-web-devicons"
     },
     config = conf("trouble")
   },
