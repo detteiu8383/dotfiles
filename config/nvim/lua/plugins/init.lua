@@ -61,6 +61,15 @@ require("lazy").setup({
     build = ":TSUpdate",
   },
 
+  -- dashboard
+  {
+    "goolord/alpha-nvim",
+    dependencies = {
+      "nvim-tree/nvim-web-devicons"
+    },
+    config = conf("alpha")
+  },
+
   -- comment
   {
     "numToStr/Comment.nvim",
@@ -108,6 +117,12 @@ require("lazy").setup({
     end
   },
 
+  -- search
+  {
+    "kevinhwang91/nvim-hlslens",
+    config = conf("hlslens")
+  },
+
   -- key mapping
   {
     "folke/which-key.nvim",
@@ -143,7 +158,11 @@ require("lazy").setup({
     "lewis6991/gitsigns.nvim",
     config = function()
       require("gitsigns").setup({})
-    end
+      require("scrollbar.handlers.gitsigns").setup({})
+    end,
+    dependencies = {
+      "petertriho/nvim-scrollbar"
+    }
   },
 
   -- fuzzy finder
@@ -237,15 +256,15 @@ require("lazy").setup({
     config = conf("nvim-cmp"),
     event = { "InsertEnter", "CmdlineEnter" },
     dependencies = {
-      { "hrsh7th/cmp-nvim-lsp", after = "nvim-lspconfig" },
-      { "hrsh7th/cmp-buffer", after = "nvim-cmp" },
-      { "hrsh7th/cmp-cmdline", after = "nvim-cmp" },
-      { "hrsh7th/cmp-path", after = "nvim-cmp" },
-      { "hrsh7th/cmp-emoji", after = "nvim-cmp" },
-      { "hrsh7th/cmp-nvim-lsp-signature-help", after = "nvim-cmp" },
-      { "hrsh7th/cmp-nvim-lsp-document-symbol", after = "nvim-cmp" },
-      { "L3MON4D3/LuaSnip", after = "nvim-cmp" },
-      { "saadparwaiz1/cmp_luasnip", after = "nvim-cmp" },
+      { "hrsh7th/cmp-nvim-lsp" },
+      { "hrsh7th/cmp-buffer" },
+      { "hrsh7th/cmp-cmdline" },
+      { "hrsh7th/cmp-path" },
+      { "hrsh7th/cmp-emoji" },
+      { "hrsh7th/cmp-nvim-lsp-signature-help" },
+      { "hrsh7th/cmp-nvim-lsp-document-symbol" },
+      { "L3MON4D3/LuaSnip" },
+      { "saadparwaiz1/cmp_luasnip" },
       { "onsails/lspkind.nvim" },
     },
   },
