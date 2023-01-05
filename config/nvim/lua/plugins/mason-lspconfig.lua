@@ -1,5 +1,11 @@
 return function()
-  require("mason-lspconfig").setup_handlers({
+  local mason = require("mason-lspconfig")
+
+  mason.setup({
+    ensure_installed = require("lsp.servers")
+  })
+
+  mason.setup_handlers({
     function(server)
       local opt = {
         on_attach = function(client, bufnr)
@@ -42,6 +48,17 @@ return function()
         end,
         capabilities = require('cmp_nvim_lsp').default_capabilities()
       }
+
+      if server == "sumneko_lua" then
+        opt.settings = {
+          Lua = {
+            diagnostics = {
+              enable = true,
+              globals = { "vim" }
+            }
+          }
+        }
+      end
 
       require("lspconfig")[server].setup(opt)
     end
