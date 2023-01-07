@@ -22,25 +22,14 @@ require("lazy").setup({
   "github/copilot.vim",
 
   -- color scheme
-  -- {
-  --   'folke/tokyonight.nvim',
-  --   config = conf("tokyonight"),
-  --   lazy = false,
-  --   priority = 1000,
-  -- },
-  -- {
-  --   "EdenEast/nightfox.nvim",
-  --   config = conf("nightfox"),
-  --   lazy = false,
-  --   priority = 1000
-  -- },
   {
-    "Shadorain/shadotheme",
-    lazy = false,
-    priority = 1000,
+    "sainnhe/sonokai",
     config = function()
-      vim.cmd("colorscheme shado")
+      vim.g.sonokai_style = "andromeda"
+      vim.cmd [[colorscheme sonokai]]
     end,
+    lazy = false,
+    priority = 1000
   },
 
   {
@@ -201,7 +190,11 @@ require("lazy").setup({
   {
     "petertriho/nvim-scrollbar",
     config = function()
-      require("scrollbar").setup({})
+      require("scrollbar").setup({
+        excluded_filetypes = {
+          "neo-tree",
+        }
+      })
     end
   },
 

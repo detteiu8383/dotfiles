@@ -1,5 +1,5 @@
 return function()
-  require("treesitter-unit").enable_highlighting()
+  -- require("treesitter-unit").enable_highlighting()
 
   require('which-key').register({
     name = 'treesitter unit',

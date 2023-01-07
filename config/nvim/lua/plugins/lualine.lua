@@ -4,7 +4,6 @@ return function()
   require("lualine").setup({
     options = {
       globalstatus = true,
-      theme = "shado"
     },
     sections = {
       lualine_c = {
