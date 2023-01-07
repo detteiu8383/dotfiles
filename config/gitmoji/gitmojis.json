@@ -126,5 +126,13 @@
     "description": "Write bad code that needs to be improved.",
     "name": "poop",
     "semver": null
+  },
+  {
+    "emoji": "👁️"
+    "entity": "&#x1f441;",
+    "code": ":eye:",
+    "description": "Eyemono-san is watching you!",
+    "name": "eye",
+    "semver": null
   }
 ]
