@@ -8,6 +8,7 @@ apt install -y \
   build-essential \
   curl \
   file \
-  git
+  git \
+  zip
 
 curl -fsSL 'https://download.docker.com/linux/ubuntu/gpg' | apt-key add -
