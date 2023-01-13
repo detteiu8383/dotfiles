@@ -39,8 +39,13 @@ require("lazy").setup({
     end,
   },
 
+  -- `f`(find) helper
   {
     "unblevable/quick-scope",
+    config = function()
+      vim.g.qs_buftype_blacklist = { "terminal", "nofile" }
+      vim.g.qs_filetype_blacklist = { "neo-tree", "mason", "lazy" }
+    end
   },
 
   -- treesitter
