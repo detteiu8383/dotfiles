@@ -60,9 +60,6 @@ fadd() {
   fi
 }
 
-### bat ###
-alias cat='bat --paging=never'
-
 ### zsh plugins ###
 zinit wait lucid blockf light-mode for \
   atload'async_init' @'mafredri/zsh-async' \
